@@ -1,5 +1,18 @@
 # scRNA-seq Notes
 
+## Script Notes
+
+After doing some basic setup, it runs 3 steps:
+
+1. cellranger fastq
+2. cellranger count 
+3. cellranger agg
+
+The first 2 run in a for loop that seems *perfect* to parallelize. The 3rd step runs in a loop as well, although parallel-ization may be a little interesting if it's doing aggregations.
+
+So, we're looking for a system that'll take some parameters/collections as inputs, start up a set of parallel jobs, wait for them to complete, then do *another* set of parallel jobs, etc. A pretty classic batch-computing workflow setup.
+
+
 
 ## Workflow Tool Options
 
