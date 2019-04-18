@@ -43,6 +43,8 @@ However, it doesn't allow for any sort of management/automation/service work, so
 
 ### Nextflow
 
+* GitHub - https://github.com/nextflow-io/nextflow#quick-start
+   * This supports Slurm as a back-end. That could work well.
 * Nextflow might work well for this, since it supports Slurm (or so we've been told)
 * However, we don't have a license yet, and it could be pricey. So there would be unavoidable delay as that gets worked out
 * Sam Minot is driving these conversations.
