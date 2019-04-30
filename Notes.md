@@ -27,6 +27,7 @@ However, it doesn't allow for any sort of management/automation/service work, so
 
 ### Snakemake
 
+* [Existing Snakemake code](https://bitbucket.org/robert_amezquita/seqsnake/src)
 * This is probably the lightest-weight workflow system we could use 'in front of' Slurm
 * We could use basic JSON for parameters/object arrays, and use Snakemake to decompose them into the parallel commands to run. 
 * Easy to try out
