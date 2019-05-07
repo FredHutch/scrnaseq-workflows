@@ -7,10 +7,9 @@ This is a repo for developing workflows for scRNAseq processes.
 
 This has process updates and status for the scRNAseq workflow work. It's intended to be informative and not polished/pretty.
 
+
 ### To Do, Current
 
-* Install Cromwell, document the steps
-* Install Nextflow, document the steps
 * Re-run the scRNAseq workflow scripts RobA (workflow A) provided using my credentials (on rhino)
 
 * Hello-world for slurm / gizmo, document the steps
@@ -40,3 +39,5 @@ This has process updates and status for the scRNAseq workflow work. It's intende
 
 
 * [Install Snakemake](https://github.com/FredHutch/scrnaseq-workflows/blob/master/snakemake/Notes.md)
+* [Install Cromwell](https://github.com/FredHutch/scrnaseq-workflows/blob/master/cromwell/Notes.md)
+* [Install Nextflow](https://github.com/FredHutch/scrnaseq-workflows/tree/master/nextflow)
