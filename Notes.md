@@ -1,4 +1,4 @@
-# scRNA-seq Notes
+# Slurm Notes
 
 ## Script Notes
 

@@ -10,16 +10,21 @@ This has process updates and status for the scRNAseq workflow work. It's intende
 
 ### To Do, Current
 
-* Re-run the scRNAseq workflow scripts RobA (workflow A) provided using my credentials (on rhino)
-
 * Hello-world for Slurm / Gizmo, document the steps
+
+
 * Hello-world for Cromwell, document the steps
 * Hello-world for Nextflow, document the steps
 
 
-### Blocked, Waiting
+### Blocked
 
+* Re-run the scRNAseq workflow scripts RobA (workflow A) provided using my credentials (on rhino)
+   * Use https://www.biostars.org/p/174331/ to get the hg38 files
 * Re-run a second scRNAsew workflow (workflow B) - *from Valentin?*
+
+
+### Upcoming
 
 * Convert workflow A to Slurm, document the steps
 * Convert workflow A to Snakemake, document the steps
@@ -45,6 +50,7 @@ This has process updates and status for the scRNAseq workflow work. It's intende
 **Hello World**
 
 * [Hello-world for Snakemake](https://github.com/FredHutch/scrnaseq-workflows/blob/master/snakemake/Notes.md)
+* [Hello-world for Slurm]()
 
 **Convert Existing Scripts**
 
