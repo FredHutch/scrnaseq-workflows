@@ -55,6 +55,7 @@ process blastSearch {
 ````
 
 * into top_hits_ch <- sends something into a channel
+* 
 
 
 
