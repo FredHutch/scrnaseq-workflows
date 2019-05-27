@@ -16,11 +16,21 @@
 Running the script
 
 ```
-sbatch helloworld.sh
-
-
 ```
 
+Run the script interactively
+
+```
+srun helloworld.sh
+```
+
+Run the script and save the output
+
+```
+sbatch helloworld.sh helloworldout2
+```
+
+^ that doesn't seem to work correctly. 
 
 
 ### Learned
