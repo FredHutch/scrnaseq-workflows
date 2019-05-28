@@ -1,0 +1,74 @@
+{
+  "runs":[
+    {
+      "group-label":"180308_1126",
+      "raw-location":"180308_SN367_1126_AHF52CBCX2",
+      "csv-location":"data-meta/lanes/lanes_180308_1126.csv", 
+      "fastq-output-dir":"data-raw/fastq/runs/fastq_180308_1126"
+    },
+    {
+      "group-label":"180308_1127",
+      "raw-location":"180308_SN367_1127_BHF52FBCX2",
+      "csv-location":"data-meta/lanes/lanes_180308_1127.csv", 
+      "fastq-output-dir":"data-raw/fastq/runs/fastq_180308_1127"
+    },
+    {
+      "group-label":"180710_1217",
+      "raw-location":"180710_SN367_1217_AHKJFHBCX2",
+      "csv-location":"data-meta/lanes/lanes_180710_1217.csv", 
+      "fastq-output-dir":"data-raw/fastq/runs/fastq_180710_1217"
+    },
+    {
+      "group-label":"180710_1218",
+      "raw-location":"180710_SN367_1218_BHKJ7FBCX2",
+      "csv-location":"data-meta/lanes/lanes_180710_1218.csv", 
+      "fastq-output-dir":"data-raw/fastq/runs/fastq_180710_1218"
+    },
+    {
+      "group-label":"180914_0609",
+      "raw-location":"180914_D00300_0609_BCCT68ANXX",
+      "csv-location":"data-meta/lanes/lanes_180914_0609.csv", 
+      "fastq-output-dir":"data-raw/fastq/runs/fastq_180914_0609"
+    },
+    {
+      "group-label":"180920_0611",
+      "raw-location":"180920_D00300_0611_AHM7VFBCX2",
+      "csv-location":"data-meta/lanes/lanes_180920_0611.csv", 
+      "fastq-output-dir":"data-raw/fastq/runs/fastq_180920_0611"
+    },
+  ],
+  "samples": [
+    {
+      "sample-label": "00600_d-SCR_BMA",
+      "sample-label": "00600_2017_BMA",
+      "sample-label": "00600_2012-1_BMA",
+      "sample-label": "00600_2012-2_BMA",
+      "sample-label": "00600_d-014_BMA",
+      "sample-label": "00600_d-014_BMC",
+      "sample-label": "00600_d-028_BMA",
+      "sample-label": "00600_d-028_BMC",
+      "sample-label": "00587_d-SCR_BMA",
+      "sample-label": "00587_d-028_BMA",
+      "sample-label": "00587_d-060_BMA",
+      "sample-label": "00587_d-090_BMA",
+      "sample-label": "00587_d-PLA_TuB",
+      "sample-label": "00599_d-SCR_BMA",
+      "sample-label": "00599_d-014_BMA",
+      "sample-label": "00599_d-060_BMC",
+      "sample-label": "00599_d-090_BMA",
+      "sample-label": "00599_d-180_BMA"
+    }
+  ],
+  "base-working-dir": "/fh/fast/gottardo_r/ramezqui_working/analysis/gottardo_10x-pont-bcma-all",
+  "base-raw-dir": "/shared/ngs/illumina/mpont",
+  "base-sample-dir": "data-raw/fastq/samples",
+
+  "ref-base": "/fh/fast/gottardo_r/ramezqui_working/reference/cellranger",
+  "ref-hg38": "refdata-cellranger-hg38-1.2.0/fasta/genome.fa",
+  "gtf-hg38": "refdata-cellranger-hg38-1.2.0/genes/genes.gtf",
+  
+  "ref-addon":"data-meta/cart-sequence/addon.fa",
+  "gtf-addon":"data-meta/cart-sequence/addon.gtf",
+
+  "ref-denovo":"data-raw/reference/cart-bcma"
+}
