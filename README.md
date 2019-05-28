@@ -10,26 +10,22 @@ This has process updates and status for the scRNAseq workflow work. It's intende
 
 ### To Do, Current
 
-
-* Hello-world for Cromwell, document the steps
-* Re-run the scRNAseq workflow scripts RobA (workflow A) provided using my credentials (on rhino)
-   * Use https://www.biostars.org/p/174331/ to get the hg38 files
-
-### Blocked
-
+* [Re-run the scRNAseq workflow scripts RobA (workflow A) provided](https://github.com/FredHutch/scrnaseq-workflows/tree/master/repro)
+   * Use https://www.biostars.org/p/174331/ to get the hg38 files?
+* [Re-run the scRNAseq workflow scripts Valentin (workflow B) provided](https://github.com/FredHutch/scrnaseq-workflows/tree/master/repro)
 
 ### Upcoming
 
 
-* Re-run a second scRNAsew workflow (workflow B) - *from Valentin?*
- 
 * Convert workflow A to Snakemake, document the steps
 * Convert workflow A to Nextflow, document the steps
 
 * Convert workflow B to Snakemake, document the steps
 * Convert workflow B to Nextflow, document the steps
 
+* Chat with Rob & Valentin, get their feedback
 * Evaluate everything - *use matrix prioritization for scoring?*
+
 
 
 ### Done
@@ -45,7 +41,7 @@ This has process updates and status for the scRNAseq workflow work. It's intende
 * [Hello-world for Snakemake](https://github.com/FredHutch/scrnaseq-workflows/blob/master/snakemake/Notes.md)
 * [Hello-world for Slurm/Gizmo](https://github.com/FredHutch/scrnaseq-workflows/tree/master/slurm)
 * [Hello-world for Nextflow](https://github.com/FredHutch/scrnaseq-workflows/tree/master/nextflow)
-* [Hello-world for Cromwell]()
+* [Hello-world for Cromwell](https://github.com/FredHutch/scrnaseq-workflows/tree/master/cromwell)
 
 **Convert Existing Scripts**
 
