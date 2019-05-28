@@ -22,12 +22,10 @@ This has process updates and status for the scRNAseq workflow work. It's intende
 
 
 * Re-run a second scRNAsew workflow (workflow B) - *from Valentin?*
-
-* Convert workflow A to Slurm, document the steps
+ 
 * Convert workflow A to Snakemake, document the steps
 * Convert workflow A to Nextflow, document the steps
 
-* Convert workflow B to Slurm, document the steps
 * Convert workflow B to Snakemake, document the steps
 * Convert workflow B to Nextflow, document the steps
 
@@ -47,6 +45,7 @@ This has process updates and status for the scRNAseq workflow work. It's intende
 * [Hello-world for Snakemake](https://github.com/FredHutch/scrnaseq-workflows/blob/master/snakemake/Notes.md)
 * [Hello-world for Slurm/Gizmo](https://github.com/FredHutch/scrnaseq-workflows/tree/master/slurm)
 * [Hello-world for Nextflow](https://github.com/FredHutch/scrnaseq-workflows/tree/master/nextflow)
+* [Hello-world for Cromwell]()
 
 **Convert Existing Scripts**
 
@@ -56,6 +55,8 @@ TBD...
 
 * Convert workflow A to Cromwell, document the steps
 * Convert workflow B to Cromwell, document the steps
+* Convert workflow A to Slurm, document the steps
+* Convert workflow B to Slurm, document the steps
 
 
 
