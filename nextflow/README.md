@@ -66,8 +66,16 @@ process blastSearch {
 * https://github.com/nf-core/scrnaseq
 * [BICF Cellranger mkfastq Analysis Workflow](https://zenodo.org/record/2652621)
 * [10x Genomics scRNA-Seq (cellranger) mkfastq Pipeline](https://git.biohpc.swmed.edu/BICF/Astrocyte/cellranger_mkfastq/blob/master/README.md)
+* [Nextflow patterns](https://github.com/nextflow-io/patterns)
 * [https://cellgeni.github.io/docs/pipelines.html](https://cellgeni.github.io/docs/index.html)
+* [Awesome nextflow pipelines](https://github.com/nextflow-io/awesome-nextflow/)
+* [FH Reproducible workflows](https://github.com/FredHutch/reproducible-workflows)
 
+**Misc**
+
+* [How do I iterate over a process n times?](https://www.nextflow.io/docs/latest/faq.html#how-do-i-iterate-over-a-process-n-times)
+* [How do I invoke custom scripts and tools?](https://www.nextflow.io/docs/latest/faq.html#how-do-i-invoke-custom-scripts-and-tools)
+* [How do I use the same channel multiple times?](https://www.nextflow.io/docs/latest/faq.html#how-do-i-use-the-same-channel-multiple-times)
 
 
 
