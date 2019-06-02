@@ -55,7 +55,7 @@ process blastSearch {
 ````
 
 * into top_hits_ch <- sends something into a channel
-* 
+
 
 
 
@@ -64,6 +64,11 @@ process blastSearch {
 * https://github.com/nf-core/chipseq
 * https://github.com/nf-core/rnaseq
 * https://github.com/nf-core/scrnaseq
+* [BICF Cellranger mkfastq Analysis Workflow](https://zenodo.org/record/2652621)
+* [10x Genomics scRNA-Seq (cellranger) mkfastq Pipeline](https://git.biohpc.swmed.edu/BICF/Astrocyte/cellranger_mkfastq/blob/master/README.md)
+* [https://cellgeni.github.io/docs/pipelines.html](https://cellgeni.github.io/docs/index.html)
+
+
 
 
 ## Sam Minot's Talk
