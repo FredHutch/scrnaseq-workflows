@@ -10,18 +10,15 @@ This has process updates and status for the scRNAseq workflow work. It's intende
 
 ### To Do, Current
 
-* [Re-run the scRNAseq workflow scripts RobA (workflow A) provided](https://github.com/FredHutch/scrnaseq-workflows/tree/master/repro)
-   * Use https://www.biostars.org/p/174331/ to get the hg38 files?
-* [Re-run the scRNAseq workflow scripts Valentin (workflow B) provided](https://github.com/FredHutch/scrnaseq-workflows/tree/master/repro)
+* Convert workflow B to Snakemake, document the steps
+* Convert workflow B to Nextflow, document the steps
 
 ### Upcoming
 
 
+
 * Convert workflow A to Snakemake, document the steps
 * Convert workflow A to Nextflow, document the steps
-
-* Convert workflow B to Snakemake, document the steps
-* Convert workflow B to Nextflow, document the steps
 
 * Chat with Rob & Valentin, get their feedback
 * Evaluate everything - *use matrix prioritization for scoring?*
@@ -42,6 +39,12 @@ This has process updates and status for the scRNAseq workflow work. It's intende
 * [Hello-world for Slurm/Gizmo](https://github.com/FredHutch/scrnaseq-workflows/tree/master/slurm)
 * [Hello-world for Nextflow](https://github.com/FredHutch/scrnaseq-workflows/tree/master/nextflow)
 * [Hello-world for Cromwell](https://github.com/FredHutch/scrnaseq-workflows/tree/master/cromwell)
+
+**Re-run Existing Scripts**
+
+* [Re-run the scRNAseq workflow scripts RobA (workflow A) provided](https://github.com/FredHutch/scrnaseq-workflows/tree/master/repro)
+   * Use https://www.biostars.org/p/174331/ to get the hg38 files?
+* [Re-run the scRNAseq workflow scripts Valentin (workflow B) provided](https://github.com/FredHutch/scrnaseq-workflows/tree/master/repro)
 
 **Convert Existing Scripts**
 

@@ -47,7 +47,6 @@ However, it doesn't allow for any sort of management/automation/service work, so
 * GitHub - https://github.com/nextflow-io/nextflow#quick-start
    * This supports Slurm as a back-end. That could work well.
 * Nextflow might work well for this, since it supports Slurm (or so we've been told)
-* However, we don't have a license yet, and it could be pricey. So there would be unavoidable delay as that gets worked out
 * Sam Minot is driving these conversations.
    * "Pablo has helpfully provided the slides from his talk last week on Nextflow and Lifebit for your reference or review — https://drive.google.com/file/d/1orWXkoUdziDCZKOd-dIfj5WaLvWhWBcf/view "
 
