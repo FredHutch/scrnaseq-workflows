@@ -1,5 +1,22 @@
 #!/usr/bin/env nextflow
 
+// Set default values for parameters
+// These can be changed when invoking the script by setting (e.g.) --ref_name hg37
+params.ref_name = "hg38"
+ref_name = params.ref_name
+
+
+// REFERENCE FILES
+params.base = "/fh/fast/gottardo_r/ramezqui_working/analysis/gottardo_10x-pont-bcma-all"
+params.ref_base = "/fh/fast/gottardo_r/ramezqui_working/reference/cellranger"
+params.ref_hg = "refdata-cellranger-hg38-1.2.0/fasta/genome.fa"
+params.gtf_hg = "refdata-cellranger-hg38-1.2.0/genes/genes.gtf"
+params.ref_addon = "data-meta/cart-sequence/addon.fa"
+params.gtg_addon = "data-meta/cart-sequence/addon.gtf"
+params.ref_denovo = "data-raw/reference/cart-bcma"
+params.force-cells = 10000
+
+
 
 process parseInputRuns {
     input:
