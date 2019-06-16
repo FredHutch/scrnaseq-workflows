@@ -1,0 +1,74 @@
+{
+  "runs":[
+    {
+      "group-label":"X663_1919_PBMC",
+      "raw-location":"",
+      "csv-location":"", 
+      "fastq-output-dir":""
+    },
+    {
+      "group-label":"X663_11518_Marrow",
+      "raw-location":"",
+      "csv-location":"", 
+      "fastq-output-dir":""
+    },
+    {
+      "group-label":"X663_11518_PBMC",
+      "raw-location":"",
+      "csv-location":"", 
+      "fastq-output-dir":""
+    },
+    {
+      "group-label":"X663_13019_Marrow",
+      "raw-location":"",
+      "csv-location":"", 
+      "fastq-output-dir":""
+    },
+    {
+      "group-label":"X663_13019_PBMC",
+      "raw-location":"",
+      "csv-location":"", 
+      "fastq-output-dir":""
+    },
+    {
+      "group-label":"",
+      "raw-location":"",
+      "csv-location":"", 
+      "fastq-output-dir":""
+    }
+  ],
+  "samples": [
+    {
+      "sample-label": "00600_d-SCR_BMA",
+      "sample-label": "00600_2017_BMA",
+      "sample-label": "00600_2012-1_BMA",
+      "sample-label": "00600_2012-2_BMA",
+      "sample-label": "00600_d-014_BMA",
+      "sample-label": "00600_d-014_BMC",
+      "sample-label": "00600_d-028_BMA",
+      "sample-label": "00600_d-028_BMC",
+      "sample-label": "00587_d-SCR_BMA",
+      "sample-label": "00587_d-028_BMA",
+      "sample-label": "00587_d-060_BMA",
+      "sample-label": "00587_d-090_BMA",
+      "sample-label": "00587_d-PLA_TuB",
+      "sample-label": "00599_d-SCR_BMA",
+      "sample-label": "00599_d-014_BMA",
+      "sample-label": "00599_d-060_BMC",
+      "sample-label": "00599_d-090_BMA",
+      "sample-label": "00599_d-180_BMA"
+    }
+  ],
+  "base-working-dir": "/fh/fast/gottardo_r/ramezqui_working/analysis/gottardo_10x-pont-bcma-all",
+  "base-raw-dir": "/shared/ngs/illumina/mpont",
+  "base-sample-dir": "data-raw/fastq/samples",
+
+  "ref-base": "/fh/fast/gottardo_r/ramezqui_working/reference/cellranger",
+  "ref-hg38": "refdata-cellranger-hg38-1.2.0/fasta/genome.fa",
+  "gtf-hg38": "refdata-cellranger-hg38-1.2.0/genes/genes.gtf",
+  
+  "ref-addon":"data-meta/cart-sequence/addon.fa",
+  "gtf-addon":"data-meta/cart-sequence/addon.gtf",
+
+  "ref-denovo":"data-raw/reference/cart-bcma"
+}

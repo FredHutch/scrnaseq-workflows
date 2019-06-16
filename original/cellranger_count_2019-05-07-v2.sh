@@ -19,6 +19,13 @@ TRANSCRIPTOME=/fh/fast/gottardo_r/vvoillet_working/Reference_genomes/refdata-cel
 FEATUREREF=5GEX_protein_feature_ref_2019-04-15.csv
 
 
+    cellranger count \
+               --id=${SAMPLE_LABELS[$I]} \
+               --transcriptome=$REF_DENOVO \
+               --fastqs=$SAMPLE_DIR/${SAMPLE_LABELS[$I]} \
+               --force-cells=10000 \
+               --nosecondary
+
 #- X663_1919_PBMC
 cellranger count --id=X663_1919_PBMC \
                  --transcriptome=$TRANSCRIPTOME \
