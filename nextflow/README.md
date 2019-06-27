@@ -96,7 +96,12 @@ to load a working version of Nextflow that is able to run jobs on AWS
 
 
 
+### Slurm Notes
 
+* https://github.com/FredHutch/slurm-examples/tree/master/R_and_sh_example
+* https://sciwiki.fredhutch.org/compdemos/how_to_beagle/
+* https://sciwiki.fredhutch.org/scicomputing/compute_platforms/#gizmo <- very important
+* https://sciwiki.fredhutch.org/scicomputing/compute_environments/
 
 
 

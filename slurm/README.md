@@ -6,6 +6,14 @@
 * [Computing Job Management](https://sciwiki.fredhutch.org/scicomputing/compute_jobs/)
 * [Parallel Computing on Slurm clusters](https://sciwiki.fredhutch.org/scicomputing/compute_parallel/)
 
+### With Nextflow
+
+* https://www.nextflow.io/docs/latest/en/latest/executor.html
+* https://sciwiki.fredhutch.org/compdemos/nextflow/
+* https://hpc.nih.gov/apps/nextflow.html
+* https://gitter.im/nextflow-io/nextflow/archives/2016/06/14
+* https://quay.io/organization/fhcrc-microbiome <- when using containers (AWS Batch requirement)
+
 
 ### Scripts
 

@@ -10,14 +10,12 @@ This has process updates and status for the scRNAseq workflow work. It's intende
 
 ### To Do, Current
 
-* Convert workflow B to Snakemake, document the steps
 * Convert workflow B to Nextflow, document the steps
+* Run workflow B on Slurm, document the steps
+* Run workflow B on AWS Batch, document the steps
 
 ### Upcoming
 
-
-
-* Convert workflow A to Snakemake, document the steps
 * Convert workflow A to Nextflow, document the steps
 
 * Chat with Rob & Valentin, get their feedback
