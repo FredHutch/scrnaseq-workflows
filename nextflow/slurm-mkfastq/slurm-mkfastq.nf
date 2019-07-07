@@ -1,8 +1,8 @@
 #!/usr/bin/env nextflow
 
-params.base_raw_dir = ''
-params.base_sample_dir = ''
-params.base_working_dir = ''
+params.base_raw_dir = '/Users/dnambi/Documents/nextflow/fast'
+params.base_sample_dir = '/Users/dnambi/Documents/nextflow/fast'
+params.base_working_dir = '/Users/dnambi/Documents/nextflow/fast'
 
 params.ref_addon = ''
 params.ref_name = ''
@@ -16,11 +16,13 @@ json_file = file(params.jsonloc)
 
 
 process parseJsonInput {
+
     input:
     stdin json_input from json_file
 
     output:
     file 'runs*' into run_ch
+    file 'samples*' into sample_ch, sample_ch2
 
     '''
     #!/usr/bin/env python
@@ -37,19 +39,27 @@ process parseJsonInput {
         file_name = 'runs-{}'.format(uuid.uuid4())
         with open(file_name,'w') as o:
             o.write(json.dumps(run))
+    # now write out each sample as its own JSON
+    for sample in input_dict.get('samples',[]):
+        file_name = 'samples-{}'.format(uuid.uuid4())
+        with open(file_name,'w') as o:
+            o.write(sample)
     '''
 }
+
 
 process rangerMkfastq {
     echo = true
 
     input:
     file run from run_ch.flatMap()
+    val raw_base from params.base_raw_dir
 
     output:
-    file 'samples*' into sample_ch
-    # filter/categorize this by sample info
+    val run_name into fastq_semaphore
 
+    script:
+    run_name = run.name
     """
     GROUP_LABEL="\$(cat $run | jq -r '.group_label')"
     RAW_LOCATION="\$(cat $run | jq -r '.raw_location')"
@@ -59,31 +69,33 @@ process rangerMkfastq {
     echo "Group label is \$GROUP_LABEL"
     echo "Raw location is \$RAW_LOCATION"
     echo "Csv is \$CSV_LOCATION"
-    echo "Fastq output goes to \$FASTQ_OUTPUT_DIR"
-    echo "cellranger mkfastq --id=\$GROUP_LABEL --run=\$RAW_LOCATION --simple-csv=$CSV_LOCATION --output-dir=\$FASTQ_OUTPUT_DIR --delete-undetermined"
-
-
+    echo "Fastq output goes to $raw_base\$FASTQ_OUTPUT_DIR"
+    echo "cellranger mkfastq --id=\$GROUP_LABEL --run=$raw_base/\$RAW_LOCATION --simple-csv=\$CSV_LOCATION --output-dir=$raw_base/\$FASTQ_OUTPUT_DIR --delete-undetermined"
     """
 }
 
-process collateSampleFiles {
+process flattenSampleDirectories {
     echo = true
 
     input:
-    file fastq from sample_ch
+    val fastq from fastq_semaphore.collect()
+    val sample_base from params.base_sample_dir
+    file sample from sample_ch2.flatMap()
 
+    output:
+    val 'Linkage made' into flatdir_semaphore
+
+    script:
     """
-    GROUP_LABEL="\$(cat $run | jq -r '.group_label')"
-    RAW_LOCATION="\$(cat $run | jq -r '.raw_location')"
-    CSV_LOCATION="\$(cat $run | jq -r '.csv_location')"
-    FASTQ_OUTPUT_DIR="\$(cat $run | jq -r '.fastq_output_dir')"
+    SAMPLE_LABEL="\$(cat $sample)"
 
-    echo "Group label is \$GROUP_LABEL"
-    echo "Raw location is \$RAW_LOCATION"
-    echo "Csv is \$CSV_LOCATION"
-    echo "Fastq output goes to \$FASTQ_OUTPUT_DIR"
-    echo "cellranger mkfastq --id=\$GROUP_LABEL --run=\$RAW_LOCATION --simple-csv=$CSV_LOCATION --output-dir=\$FASTQ_OUTPUT_DIR --delete-undetermined"
+    mkdir -p $sample_base/data-raw/fastq/samples
+    cd $sample_base/data-raw/fastq/samples
 
-
+    echo "Flatten directories sample label is \$SAMPLE_LABEL"
+    echo "ln -s \$PWD/../runs/*/*/\$SAMPLE_LABEL ."
     """
 }
+
+
+
