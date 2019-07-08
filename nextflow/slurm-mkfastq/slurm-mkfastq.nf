@@ -1,15 +1,8 @@
 #!/usr/bin/env nextflow
 
-params.base_raw_dir = '/Users/dnambi/Documents/nextflow/fast'
-params.base_sample_dir = '/Users/dnambi/Documents/nextflow/fast'
-params.base_working_dir = '/Users/dnambi/Documents/nextflow/fast'
-
-params.ref_addon = ''
-params.ref_name = ''
-params.gtf_addon = ''
-params.gtf_hg = ''
-
-params.ref_denovo = ''
+params.base_raw_dir = "/shared/ngs/illumina/mpont"
+params.base_working_dir = "/fh/fast/_HDC/cortex/dnambi/workflows/mkfastq"
+params.base_sample_dir = "/fh/fast/_HDC/cortex/dnambi/workflows/mkfastq"
 
 params.jsonloc = 'process10x.json'
 json_file = file(params.jsonloc)
@@ -54,6 +47,7 @@ process rangerMkfastq {
     input:
     file run from run_ch.flatMap()
     val raw_base from params.base_raw_dir
+    val working_base from params.base_working_dir
 
     output:
     val run_name into fastq_semaphore
@@ -70,7 +64,9 @@ process rangerMkfastq {
     echo "Raw location is \$RAW_LOCATION"
     echo "Csv is \$CSV_LOCATION"
     echo "Fastq output goes to $raw_base\$FASTQ_OUTPUT_DIR"
-    echo "cellranger mkfastq --id=\$GROUP_LABEL --run=$raw_base/\$RAW_LOCATION --simple-csv=\$CSV_LOCATION --output-dir=$raw_base/\$FASTQ_OUTPUT_DIR --delete-undetermined"
+
+    ml cellranger
+    cellranger mkfastq --id=\$GROUP_LABEL --run=$raw_base/\$RAW_LOCATION --simple-csv=$working_base/\$CSV_LOCATION --output-dir=$working_base/\$FASTQ_OUTPUT_DIR --delete-undetermined
     """
 }
 
@@ -93,9 +89,7 @@ process flattenSampleDirectories {
     cd $sample_base/data-raw/fastq/samples
 
     echo "Flatten directories sample label is \$SAMPLE_LABEL"
-    echo "ln -s \$PWD/../runs/*/*/\$SAMPLE_LABEL ."
+    ln -s \$PWD/../runs/*/*/\$SAMPLE_LABEL .
     """
 }
-
-
 

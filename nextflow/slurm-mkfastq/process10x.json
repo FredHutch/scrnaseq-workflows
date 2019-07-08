@@ -56,17 +56,5 @@
     "00599_d-060_BMC",
     "00599_d-090_BMA",
     "00599_d-180_BMA"
-  ],
-  "base-working-dir": "/fh/fast/gottardo_r/ramezqui_working/analysis/gottardo_10x-pont-bcma-all",
-  "base-raw-dir": "/shared/ngs/illumina/mpont",
-  "base-sample-dir": "data-raw/fastq/samples",
-
-  "ref-base": "/fh/fast/gottardo_r/ramezqui_working/reference/cellranger",
-  "ref-hg38": "refdata-cellranger-hg38-1.2.0/fasta/genome.fa",
-  "gtf-hg38": "refdata-cellranger-hg38-1.2.0/genes/genes.gtf",
-  
-  "ref-addon":"data-meta/cart-sequence/addon.fa",
-  "gtf-addon":"data-meta/cart-sequence/addon.gtf",
-
-  "ref-denovo":"data-raw/reference/cart-bcma"
+  ]
 }
