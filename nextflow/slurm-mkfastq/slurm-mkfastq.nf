@@ -89,7 +89,11 @@ process flattenSampleDirectories {
     cd $sample_base/data-raw/fastq/samples
 
     echo "Flatten directories sample label is \$SAMPLE_LABEL"
-    ln -s \$PWD/../runs/*/*/\$SAMPLE_LABEL .
+    LINKCOUNT=\$(ls -la | grep \$SAMPLE_LABEL | wc -l)
+    if [ \$LINKCOUNT = 0 ]; then
+        ln -s \$PWD/../runs/*/*/\$SAMPLE_LABEL .
+    else
+        echo "ln -s already exists for \$SAMPLE_LABEL , skipping"
+    fi
     """
 }
-
