@@ -16,15 +16,9 @@ params.ref_addon = "/roba/data-meta/cart-sequence/addon.fa"
 params.gtf_addon = "/roba/data-meta/cart-sequence/addon.gtf"
 params.ref_denovo = "cart-bcma"
 
-//Debug local variable values
-//params.base = "/Users/dnambi/Documents/GitHub/scrnaseq-workflows/nextflow/slurm-mkref"
-//params.ref_hg = "/genome.fa"
-//params.gtf_hg = "/genes.gtf"
-//params.gtf_addon = "/addon.gtf"
-//params.ref_addon = "/addon.fa"
-params.base_raw_dir = '/Users/dnambi/Documents/nextflow/fast/data-raw'
-params.base_sample_dir = '/Users/dnambi/Documents/nextflow/fast'
-params.base_working_dir = '/Users/dnambi/Documents/nextflow/fast'
+params.base_raw_dir = "/shared/ngs/illumina/mpont"
+params.base_working_dir = "/fh/fast/_HDC/cortex/dnambi/workflows/count"
+params.base_sample_dir = "/fh/fast/_HDC/cortex/dnambi/workflows/count"
 
 params.jsonloc = 'process10x.json'
 json_file = file(params.jsonloc)
@@ -132,6 +126,7 @@ process rangerMkfastq {
     input:
     file run from run_ch.flatMap()
     val raw_base from params.base_raw_dir
+    val working_base from params.base_working_dir
 
     output:
     val run_name into fastq_semaphore
@@ -148,7 +143,8 @@ process rangerMkfastq {
     echo "Raw location is \$RAW_LOCATION"
     echo "Csv is \$CSV_LOCATION"
     echo "Fastq output goes to $raw_base\$FASTQ_OUTPUT_DIR"
-    echo "cellranger mkfastq --id=\$GROUP_LABEL --run=$raw_base/\$RAW_LOCATION --simple-csv=\$CSV_LOCATION --output-dir=$raw_base/\$FASTQ_OUTPUT_DIR --delete-undetermined"
+    ml cellranger
+    cellranger mkfastq --id=\$GROUP_LABEL --run=$raw_base/\$RAW_LOCATION --simple-csv=$working_base/\$CSV_LOCATION --output-dir=$working_base/\$FASTQ_OUTPUT_DIR --delete-undetermined
     """
 }
 
@@ -173,7 +169,12 @@ process flattenSampleDirectories {
     cd $sample_base/data-raw/fastq/samples
 
     echo "Flatten directories sample label is \$SAMPLE_LABEL"
-    echo "ln -s \$PWD/../runs/*/*/\$SAMPLE_LABEL ."
+    LINKCOUNT=\$(ls -la | grep \$SAMPLE_LABEL | wc -l)
+    if [ \$LINKCOUNT = 0 ]; then
+        ln -s \$PWD/../runs/*/*/\$SAMPLE_LABEL .
+    else
+        echo "ln -s already exists for \$SAMPLE_LABEL , skipping"
+    fi
     """
 }
 
@@ -190,27 +191,29 @@ process rangerCount {
     val force_cells from params.count_force_cells
     val expect_cells from params.count_expect_cells
     val base_raw from params.base_raw_dir
-    val dir_linkage_is_done from flatdir_semaphore
-
-    output:
-    val 'Count complete' into count_semaphore
+    val sample_base from params.base_sample_dir
+    val run_denovo from params.denovo
+    val flat_dirs from flatdir_semaphore
 
     """
     ID="\$(cat $run | jq -r '.group_label')"
-    RAW_LOCATION="\$(cat $run | jq -r '.raw_location')"
-    CSV_LOCATION="\$(cat $run | jq -r '.csv_location')"
     FASTQ_OUTPUT_DIR="\$(cat $run | jq -r '.fastq_output_dir')"
 
-    #echo "ID (label) is \$ID"
-    #echo "Raw location is \$RAW_LOCATION"
-    #echo "Csv is \$CSV_LOCATION"
-    #echo "Fastq output goes to \$FASTQ_OUTPUT_DIR"
-    #echo "transcriptome location is $transcript_loc"
-    #echo "force cells is $force_cells"
-    #echo "expect cells is $expect_cells"
-    echo "mkdir -p $base_raw/counts"
-    echo "cd $base_raw/counts"
-    echo "cellranger count -id=\$ID -transcriptome=$transcript_loc -fastqs=$base_raw/\$FASTQ_OUTPUT_DIR/\$ID"
+    echo "ID (label) is \$ID"
+    echo "Fastq output goes to \$FASTQ_OUTPUT_DIR"
+    echo "transcriptome location is $transcript_loc"
+
+    mkdir -p $sample_base/data-raw/counts
+    cd $sample_base/data-raw/counts
+
+    COMMAND="cellranger count -id=\$ID -fastqs=$sample_base/\$FASTQ_OUTPUT_DIR"
+    if [ $run_denovo = "true" ]; then
+        COMMAND="\$COMMAND -transcriptome=$transcript_loc"
+    fi
+    
+    ml cellranger
+    echo "Command: \$COMMAND"
+    eval \$COMMAND
     """
 
     /**
@@ -252,11 +255,14 @@ process rangerAggregate {
     echo = true
 
     input:
-    val base_raw from params.base_raw_dir
+    val base_raw from params.base_working_dir
     val count_is_done from count_semaphore
     file csv from csv_path
 
     """
+    mkdir -p $base_raw/data-raw/aggregate
+    cd $base_raw/data-raw/aggregate
+    
     echo "Aggregating on $csv"
     echo "Cellranger aggr --id=\$(basename $csv .csv) --csv=$csv"
     """

@@ -19,6 +19,7 @@ params.ref_denovo = "cart-bcma"
 params.base_raw_dir = "/shared/ngs/illumina/mpont"
 params.base_working_dir = "/fh/fast/_HDC/cortex/dnambi/workflows/count"
 params.base_sample_dir = "/fh/fast/_HDC/cortex/dnambi/workflows/count"
+params.count_flags = " --force-cells=10000 --nosecondary"
 
 params.jsonloc = 'process10x.json'
 json_file = file(params.jsonloc)
@@ -189,35 +190,31 @@ process rangerCount {
     input:
     file run from run_ch2.flatMap()
     val transcript_loc from params.ref_denovo
-    val force_cells from params.count_force_cells
-    val expect_cells from params.count_expect_cells
     val base_raw from params.base_raw_dir
+    val sample_base from params.base_sample_dir
     val run_denovo from params.denovo
     val flat_dirs from flatdir_semaphore
+    val flags from params.count_flags
 
     """
     ID="\$(cat $run | jq -r '.group_label')"
-    RAW_LOCATION="\$(cat $run | jq -r '.raw_location')"
-    CSV_LOCATION="\$(cat $run | jq -r '.csv_location')"
     FASTQ_OUTPUT_DIR="\$(cat $run | jq -r '.fastq_output_dir')"
 
     echo "ID (label) is \$ID"
-    echo "Raw location is \$RAW_LOCATION"
-    echo "Csv is \$CSV_LOCATION"
     echo "Fastq output goes to \$FASTQ_OUTPUT_DIR"
     echo "transcriptome location is $transcript_loc"
 
-    mkdir -p $base_raw/counts
-    cd $base_raw/counts
+    mkdir -p $sample_base/data-raw/counts
+    cd $sample_base/data-raw/counts
 
-    COMMAND="cellranger count -id=\$ID -fastqs=$base_raw/\$FASTQ_OUTPUT_DIR/\$ID"
+    COMMAND="cellranger count --id=\$ID --fastqs=$sample_base/\$FASTQ_OUTPUT_DIR $flags"
     if [ $run_denovo = "true" ]; then
-        COMMAND="\$COMMAND -transcriptome=$transcript_loc"
+        COMMAND="\$COMMAND --transcriptome=$transcript_loc"
     fi
     
     ml cellranger
-    echo "Command: $COMMAND"
-    eval $COMMAND
+    echo "Command: \$COMMAND"
+    eval \$COMMAND
     """
 
     /**
