@@ -87,7 +87,7 @@ To run this, you need to run Nextflow from a folder that has the [nextflow.confi
 
 ### Design
 
-There are 6 steps in 4 parts:
+There are 6 process steps in 4 parts. (The parts are there to keep the workflow intuitive)
 
 **Part A: Parse Inputs** - This has a single process, ```parseJsonInput```, that is a Python3 script that parses a JSON input file and outputs the runs and samples into channels.
 
