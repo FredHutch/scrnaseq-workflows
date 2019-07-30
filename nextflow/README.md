@@ -101,6 +101,8 @@ There are 6 process steps in 4 parts. (The parts are there to keep the workflow 
 
 **Part D: Cellranger Count** - This is a single process, ```rangerCount```, that runs cellranger count with the specified parameters. This will run each cellranger count call in parallel, one per run.
 
+*(TBD: Cellranger agg)*
+
 
 
 # Resources
