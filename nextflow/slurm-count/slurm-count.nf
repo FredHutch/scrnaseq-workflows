@@ -24,8 +24,8 @@ params.count_flags = " --force-cells=10000 --nosecondary"
 params.jsonloc = 'process10x.json'
 json_file = file(params.jsonloc)
 
-
 params.count_expect_cells = '999'
+
 
 /**
 The number of iterations of the algorithm
@@ -141,10 +141,12 @@ process rangerMkfastq {
     FASTQ_OUTPUT_DIR="\$(cat $run | jq -r '.fastq_output_dir')"
 
     echo "Group label is \$GROUP_LABEL"
-    echo "Raw location is \$RAW_LOCATION"
-    echo "Csv is \$CSV_LOCATION"
-    echo "Fastq output goes to $raw_base\$FASTQ_OUTPUT_DIR"
+    echo "Raw location is $raw_base/\$RAW_LOCATION"
+    echo "Csv is $working_base/\$CSV_LOCATION"
+    echo "Fastq output goes to $working_base/\$FASTQ_OUTPUT_DIR"
 
+    ml bzip2/1.0.6-foss-2016b
+    ml bcl2fastq
     ml cellranger
     cellranger mkfastq --id=\$GROUP_LABEL --run=$raw_base/\$RAW_LOCATION --simple-csv=$working_base/\$CSV_LOCATION --output-dir=$working_base/\$FASTQ_OUTPUT_DIR --delete-undetermined
     """
@@ -190,7 +192,6 @@ process rangerCount {
     input:
     file run from run_ch2.flatMap()
     val transcript_loc from params.ref_denovo
-    val base_raw from params.base_raw_dir
     val sample_base from params.base_sample_dir
     val run_denovo from params.denovo
     val flat_dirs from flatdir_semaphore
@@ -201,7 +202,7 @@ process rangerCount {
     FASTQ_OUTPUT_DIR="\$(cat $run | jq -r '.fastq_output_dir')"
 
     echo "ID (label) is \$ID"
-    echo "Fastq output goes to \$FASTQ_OUTPUT_DIR"
+    echo "Fastq is at \$FASTQ_OUTPUT_DIR"
     echo "transcriptome location is $transcript_loc"
 
     mkdir -p $sample_base/data-raw/counts
