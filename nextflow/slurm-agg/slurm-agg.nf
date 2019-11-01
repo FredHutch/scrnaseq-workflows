@@ -193,7 +193,7 @@ process rangerCount {
     val base_raw from params.base_raw_dir
     val sample_base from params.base_sample_dir
     val run_denovo from params.denovo
-    val flat_dirs from flatdir_semaphore
+    val flat_dirs from flatdir_semaphore.collect()
 
     """
     ID="\$(cat $run | jq -r '.group_label')"
@@ -256,7 +256,7 @@ process rangerAggregate {
 
     input:
     val base_raw from params.base_working_dir
-    val count_is_done from count_semaphore
+    val count_is_done from count_semaphore.collect()
     file csv from csv_path
 
     """

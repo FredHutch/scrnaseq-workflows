@@ -194,7 +194,7 @@ process rangerCount {
     val transcript_loc from params.ref_denovo
     val sample_base from params.base_sample_dir
     val run_denovo from params.denovo
-    val flat_dirs from flatdir_semaphore
+    val flat_dirs from flatdir_semaphore.collect()
     val flags from params.count_flags
 
     """
